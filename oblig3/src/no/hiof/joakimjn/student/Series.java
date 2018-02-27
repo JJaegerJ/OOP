@@ -1,0 +1,132 @@
+package no.hiof.joakimjn.student;
+
+import javax.management.relation.RoleList;
+import java.util.ArrayList;
+import java.util.Date;
+
+
+public class  Series implements Comparable<Series> {
+
+    private static ArrayList<Series> seriesList = new ArrayList<>();
+    private String title;
+    private String description;
+    private Date releaseDate;
+    private ArrayList<Episode> episodeList = new ArrayList<>();
+    private float avgDuration;
+    private int numberOfSeasons;
+
+
+        //Constuctor
+    public Series(String title, String description, Date releaseDate) {
+        this.title = title;
+        this.description = description;
+        this.releaseDate = releaseDate;
+        seriesList.add(this);
+
+    }
+
+    public int getNumberOfSeasons() {
+        return numberOfSeasons;
+    }
+
+    //Getters and Setters
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public ArrayList<Episode> getEpisodeList() {
+        return episodeList;
+    }
+
+    public void setEpisodeList(ArrayList<Episode> episodeList) {
+        this.episodeList = episodeList;
+    }
+
+    public float getAvgDuration() {
+        return avgDuration;
+    }
+
+    //Metodes
+    public void addEpisode(Episode episode) {
+        if (episode.getSeason() > numberOfSeasons + 1) {
+            System.out.println("Kan ikke legge til en episode som er 2 eller fler sesonger høyere enn den gjeldene sesongen");
+        }
+        else{
+            this.episodeList.add(episode);
+            if (episode.getSeason() > numberOfSeasons) {
+                numberOfSeasons = episode.getSeason();
+            }
+        }
+            updateAvgDuration();
+    }
+    public void printSeason( int seasonNr) {
+        for (Episode y: episodeList){
+            if ( y.getSeason() == seasonNr){
+                System.out.println(y);
+            }
+        }
+    }
+    private void updateAvgDuration() {
+
+        float totalDuration = 0;
+
+        for (Episode i: episodeList) {
+            totalDuration += i.getDuration();
+        }
+        avgDuration = totalDuration/episodeList.size();
+    }
+    public ArrayList<Role> getCast() {
+        ArrayList<Role> castList = new ArrayList<>();
+        for (Episode i: episodeList) {
+            for (Role e: i.getRoleList()) {
+                castList.add(e);
+            }
+        }
+        return castList;
+    }
+
+    @Override
+    public String toString() {
+        return "Title: " + title + "\nDescrition: " + description + "\nRelease date: " + releaseDate.getYear() + "\nEpisode Liste: \n" + episodeList;
+    }
+
+
+
+    @Override
+    public int compareTo(Series o) {
+        final int before = -1;
+        final int equal = 0;
+        final int after = 1;
+
+        int compare = this.getTitle().compareTo(o.getTitle());
+
+        if ( compare < 0) {
+            return before;
+        }
+        else if (compare > 0) {
+            return after;
+        }
+        return equal;
+
+    }
+}
