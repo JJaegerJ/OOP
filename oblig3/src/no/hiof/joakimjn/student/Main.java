@@ -146,8 +146,26 @@ public class Main {
         //Her bruker jeg metoden getCast som henter ut alle roller i tv serien dexter og hva de heter.
      System.out.println(Dexter.getCast());
 
-        Collections.sort();
+     Series fangenPaaFortet = new Series("Fangen på Fortet", "blal lvlalav", new Date(1922,03,03));
+     Series howImet = new Series("How i met ur mother", "blal lvlalav", new Date(1922,03,03));
+     Series aaaaaTest = new Series("Albatros", "blal lvlalav", new Date(1922,03,03));
 
+        ArrayList<Series> testlist = Series.getSeriesList();
 
+        System.out.println(testlist);
+
+        Collections.sort(testlist);
+
+        System.out.println("****************************");
+        System.out.println(testlist);
+
+        ArrayList<Movie> movieTestList = Movie.getMovieList();
+        Collections.sort(movieTestList);
+        System.out.println(movieTestList);
+
+        Collections.sort(Dexter.getEpisodeList());
+
+        System.out.println("*****************");
+        System.out.println(Dexter.getEpisodeList());
     }
 }

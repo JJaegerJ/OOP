@@ -2,7 +2,7 @@ package no.hiof.joakimjn.student;
 
 import java.util.Date;
 
-public class Episode extends Production {
+public class Episode extends Production implements Comparable<Episode> {
 
     private int episodeNr;
     private int season;
@@ -49,6 +49,23 @@ public class Episode extends Production {
     }
 
 
+    @Override
+    public int compareTo(Episode o) {
+
+        if (this.season < o.season) {
+            return -1;
+        }
+        else if (this.season > o.season) {
+            return 1;
+        }
+        else if (this.getEpisodeNr() < o.episodeNr) {
+            return -1;
+        }
+        else if (this.episodeNr > o.episodeNr) {
+            return 1;
+        }
+        return 0;
+    }
 
     @Override
     public String toString() {

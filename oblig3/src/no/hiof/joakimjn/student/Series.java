@@ -25,6 +25,10 @@ public class  Series implements Comparable<Series> {
 
     }
 
+    public static ArrayList<Series> getSeriesList() {
+        return seriesList;
+    }
+
     public int getNumberOfSeasons() {
         return numberOfSeasons;
     }
@@ -114,19 +118,15 @@ public class  Series implements Comparable<Series> {
 
     @Override
     public int compareTo(Series o) {
-        final int before = -1;
-        final int equal = 0;
-        final int after = 1;
 
         int compare = this.getTitle().compareTo(o.getTitle());
 
         if ( compare < 0) {
-            return before;
+            return -1;
         }
         else if (compare > 0) {
-            return after;
+            return 1;
         }
-        return equal;
-
+        return 0;
     }
 }
