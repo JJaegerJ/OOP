@@ -26,12 +26,13 @@ public class MainJavaFX extends Application {
 
     public MainJavaFX(){
 
-     //   FileHandler.FileReaderJson("filmer_1000.json");
+     FileHandler.FileReaderJson("movies.json");
+     allMovies.addAll(Movie.getMovieList());
 
-        allMovies.add(new Movie("The Shawshank Redemption",131,"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.", LocalDate.of(1994,10,14)));
-        allMovies.add(new Movie("The Dark Knight",162,"When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham, the Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.",LocalDate.of(2008,7,18)));
-        allMovies.add(new Movie("Pulp Fiction",164,"The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",LocalDate.of(1994,10,14)));
-        allMovies.add(new Movie("Fight Club",139,"An insomniac office worker, looking for a way to change his life, crosses paths with a devil-may-care soapmaker, forming an underground fight club that evolves into something much, much more.",LocalDate.of(1999,10,15)));
+        //allMovies.add(new Movie("The Shawshank Redemption",131,"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.", LocalDate.of(1994,10,14)));
+        //allMovies.add(new Movie("The Dark Knight",162,"When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham, the Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.",LocalDate.of(2008,7,18)));
+        //allMovies.add(new Movie("Pulp Fiction",164,"The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",LocalDate.of(1994,10,14)));
+        //allMovies.add(new Movie("Fight Club",139,"An insomniac office worker, looking for a way to change his life, crosses paths with a devil-may-care soapmaker, forming an underground fight club that evolves into something much, much more.",LocalDate.of(1999,10,15)));
 
         mainJavaFXApplication = this;
 
