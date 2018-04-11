@@ -26,7 +26,7 @@ public class MainJavaFX extends Application {
 
     public MainJavaFX(){
 
-     FileHandler.FileReaderJson("movies.json");
+
      allMovies.addAll(Movie.getMovieList());
 
         //allMovies.add(new Movie("The Shawshank Redemption",131,"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.", LocalDate.of(1994,10,14)));
@@ -45,11 +45,12 @@ public class MainJavaFX extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         goToMovieListView();
+        FileHandler.readFile();
 
     }
     @Override
-    public void stop() {
-        FileHandler.FileWriterJson("Movies.json",allMovies);
+    public void stop()throws Exception {
+        FileHandler.writeToFile();
     }
 
     public void goToMovieListView(){

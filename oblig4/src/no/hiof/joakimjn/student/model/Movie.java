@@ -20,6 +20,9 @@ public class Movie extends Production implements Comparable<Movie> {
         movieList.add(this);
     }
 
+    public String getPosterURL() {
+        return posterURL;
+    }
 
     public static ArrayList<Movie> getMovieList() {
         return movieList;

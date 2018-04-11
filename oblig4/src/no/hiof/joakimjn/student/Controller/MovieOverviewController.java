@@ -6,6 +6,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import no.hiof.joakimjn.student.MainJavaFX;
 import no.hiof.joakimjn.student.model.Movie;
 
@@ -22,6 +24,8 @@ public class MovieOverviewController {
     private TextField movieDuration;
     @FXML
     private ListView<Movie> MovieOverviewList;
+    @FXML
+    private ImageView PosterView;
 
     public ObservableList<Movie> movieObservableList = MainJavaFX.mainJavaFXApplication.getAllMovies();
 
@@ -34,10 +38,14 @@ public class MovieOverviewController {
         MovieOverviewList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Movie>() {
             @Override
             public void changed(ObservableValue<? extends Movie> observable, Movie oldMovie, Movie newMovie) {
-                movieDescription.setText(newMovie.getDescription());
-                movieDuration.setText(String.valueOf(newMovie.getDuration()));
-                movieReleaseDate.setText(String.valueOf(newMovie.getReleaseDate()));
-                movieTitle.setText(newMovie.getTitle());
+                if (newMovie != null) {
+                    movieDescription.setText(newMovie.getDescription());
+                    movieDuration.setText(String.valueOf(newMovie.getDuration()));
+                    movieReleaseDate.setText(String.valueOf(newMovie.getReleaseDate()));
+                    movieTitle.setText(newMovie.getTitle());
+                    Image poster = new Image("https://image.tmdb.org/t/p/w500" + newMovie.getPosterURL());
+                    PosterView.setImage(poster);
+                }
 
 
             }
